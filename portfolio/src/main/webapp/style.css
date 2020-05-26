@@ -7,3 +7,9 @@
 #greeting-container {
   margin-top: 20px;
 }
+
+body {
+  background-image: "/images/utah.jpg";
+  background-color: #cccccc;
+  font-family: arial;
+}
