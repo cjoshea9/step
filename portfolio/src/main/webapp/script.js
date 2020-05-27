@@ -24,5 +24,5 @@ function addRandomGreeting() {
 
   // Add it to the page.
   const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+  greetingContainer.innerText = "I was born in Sydney, Australia.";
 }
