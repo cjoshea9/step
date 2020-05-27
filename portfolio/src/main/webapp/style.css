@@ -14,7 +14,7 @@
   padding: 0;  
 }
 
-#navbar-li {
+.navbar-li {
   display: inline;
   font-size: 20px;
   padding: 10px;
@@ -24,16 +24,14 @@ div {
   display: block;
 }
 
-.intro-header {
-  color:white;
-  font-size: 6em;
-  padding-top: 23vh;
+.intro {
   text-align: center;
+  padding-top: 60%;
+  border:20%;
 }
 
-.intro {
-  height: 1000px;
-  text-align: center;
+#resume-container{
+    margin: 20px;
 }
 
 @font-face {
