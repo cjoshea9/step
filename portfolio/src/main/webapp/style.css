@@ -28,7 +28,6 @@ body {
 #navbar-li {
   display: inline;
   padding: 10px;
-  background-color: #dddddd;
 }
 
 div {
@@ -43,5 +42,19 @@ div {
 }
 
 .intro {
-    height: 2000px;
+    height: 1000px;
+    text-align: center;
 }
+
+.arrow {
+  border: solid white;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
