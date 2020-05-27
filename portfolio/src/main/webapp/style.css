@@ -1,17 +1,21 @@
 #content {
   margin-left: auto;
   margin-right: auto;
-  width: 800px;
-}
-
-#greeting-container {
-  margin-top: 20px;
 }
 
 body {
   background-color: #000000;
   font-family: arial;
   color: white;
+}
+
+.first {
+    background: white;
+    color: black;
+}
+
+.home-element{
+    width: 800px;
 }
 
 #navbar-div {
@@ -21,10 +25,9 @@ body {
   float: right;
 }
 
-li {
+#navbar-li {
   display: inline;
   padding: 10px;
-  background-color: #dddddd;
 }
 
 div {
@@ -35,4 +38,23 @@ div {
   padding-top: 23vh;
   font-size: 5em;
   color:white;
+  text-align: center;
 }
+
+.intro {
+    height: 1000px;
+    text-align: center;
+}
+
+.arrow {
+  border: solid white;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
