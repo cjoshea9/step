@@ -1,17 +1,21 @@
 #content {
   margin-left: auto;
   margin-right: auto;
-  width: 800px;
-}
-
-#greeting-container {
-  margin-top: 20px;
 }
 
 body {
   background-color: #000000;
   font-family: arial;
   color: white;
+}
+
+.first {
+    background: white;
+    color: black;
+}
+
+.home-element{
+    width: 800px;
 }
 
 #navbar-div {
@@ -21,7 +25,7 @@ body {
   float: right;
 }
 
-li {
+#navbar-li {
   display: inline;
   padding: 10px;
   background-color: #dddddd;
@@ -35,4 +39,9 @@ div {
   padding-top: 23vh;
   font-size: 5em;
   color:white;
+  text-align: center;
+}
+
+.intro {
+    height: 2000px;
 }
