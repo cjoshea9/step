@@ -4,11 +4,11 @@
 }
 
 .homepage-info{
-  width: 100vw;
-  height: 50vw;
   display: flex;
-  text-align: center;
+  height: 50vw;
   justify-content: center;
+  text-align: center;
+  width: 100vw;
 }
 
 .profile {
@@ -16,21 +16,40 @@
 }
 
 .profile-text {
-  width: 25vw;
   align-items: center;
+  width: 25vw;
 }
 
 #profile-picture {
   border-radius: 70%;
   box-shadow: 7px 7px 3px rgb(56, 54, 54);
+  height: 420px; 
+  width: 300px;
 }
 
-.baseball {
+.frat {
   border-radius: 8%;
+  display: block; 
+  height: 200px;
   padding: 5px;
+  width: 350px;
 }
 
-#baseball-button {
+.baseball-small {
+  border-radius: 8%;
+  height: 200px;
+  padding: 5px;
+  width: 300px;
+}
+
+.baseball-large {
+  border-radius: 8%;
+  height: 200px;
+  padding: 5px;
+  width: 350px;
+}
+
+.small-button {
   background: white;
 }
 
@@ -41,7 +60,9 @@
 }
 
 .icon {
-    border-radius: 70%;
+  border-radius: 70%;
+  height:50px;
+  width: 50px;
 }
 
 #navbar-div {
@@ -58,18 +79,29 @@
 }
 
 .navbar-li:hover {
-    background-color: #797579;
+  background-color: #797579;
+}
+
+#contact {
+  align-items: center;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .slideshow-container {
+    align-items: center;
   justify-content: center;
-  align-items: center;
   text-align: center;
 }
 
 .slideshow-pic {
+  border-radius: 5%;
+  box-shadow: 10px 10px 9px -3px rgba(92,84,92,1);
   height:40vw;
   width:28vw;
+  -moz-box-shadow: 10px 10px 9px -3px rgba(92,84,92,1);
+  -webkit-box-shadow: 10px 10px 9px -3px rgba(92,84,92,1);
 }
 
 .slide {
@@ -77,13 +109,13 @@
 }
 
 .arrow {
-  cursor: pointer;
-  padding: 10px;
-  color: white;
-  font-weight: bold;
-  font-size: 22px;
-  transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
+  color: white;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 10px;
+  transition: 0.6s ease;
   user-select: none;
 }
 
@@ -92,10 +124,10 @@
 }
 
 .fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
   animation-duration: 1.5s;
+  animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-name: fade;
 }
 
 @-webkit-keyframes fade {
@@ -109,12 +141,12 @@
 }
 
 .intro {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
   text-align: center;
   width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .file-container{
