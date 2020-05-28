@@ -4,7 +4,24 @@
 }
 
 #homepage-info{
-  width: 800px;
+  width: 100vw;
+  height: 50vw;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.profile {
+    padding: 5vw;
+}
+
+#profile-text {
+    width: 25vw;
+    align-items: center;
+}
+
+.profile-picture {
+    border-radius: 70%;
 }
 
 #navbar-div {
@@ -16,18 +33,17 @@
 
 .navbar-li {
   display: inline;
-  font-size: 20px;
-  padding: 10px;
-}
-
-div {
-  display: block;
+  font-size: 35px;
+  padding: 15px;
 }
 
 .intro {
   text-align: center;
-  padding-top: 60%;
-  border:20%;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #resume-container{
@@ -52,7 +68,6 @@ body {
 }
 
 .sign {
-  align-items: center;
   animation: shine 2s forwards, flicker 3s infinite;  
   background-image: radial-gradient(
     ellipse 50% 35% at 50% 50%,
@@ -62,16 +77,11 @@ body {
   color: #ffe6ff;
   font-family: "Clip";
   font-size: 6em;
-  left: 50%;
   letter-spacing: 2;
-  justify-content: center;
-  position: absolute;
   text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
     -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
     0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
   text-transform: uppercase;
-  top: 50%;
-  transform: translate(-50%, -50%);
 }
 
 @keyframes blink {

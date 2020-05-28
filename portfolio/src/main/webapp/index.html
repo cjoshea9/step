@@ -7,45 +7,37 @@
     <script src="script.js"></script>
   </head>
   <body>
-    <div>
-      <header> 
-        <nav>
-          <div>
-            <ul id="navbar-div">
-              <li class="navbar-li">
-                <a href="index.html">Home</a> 
-              </li>
-              <li class="navbar-li">
-                <a href="resume.html">Resume</a> 
-              </li>
-              <li class="navbar-li">
-                <a href="photos.html">Photos</a>
-              </li>
-              <li class="navbar-li">
-                <a href="contact.html">Contact</a> 
-              </li>
-            </ul>    
-          </div>
-        </nav>
-      </header>
-    </div>
+    <div id="navbar"></div>
+    <script src="navigation.js"></script>
     <div id="content">
       <div class="intro">
         <div class="sign">
           <span class="fast-flicker">H</span>i, I am Cor<span class="flicker">y O'S</span>hea
         </div>  
         <!--
-        <p>Click here to get a random message:</p>
         <button onclick="addRandomGreeting()">Hello</button>
         <div id="greeting-container"></div>
         -->
       </div>
-      <section> 
-        <div id="homepage-info">
-          <img src="/images/IMG_4508.JPG" height="420" width="300">
-          <h2> Welcome to my portfolio</h2>
-        </div> 
-      </section>
+      <div id="homepage-info">
+        <div class="profile">  
+          <img class="profile-picture" src="/images/IMG_4508.JPG" height="420" width="300">
+        </div>
+        <div class="profile" id="profile-text">
+          <h1> Welcome to my portfolio</h1>
+          <h3> My name is Cory O'Shea and I am rising junior at MIT studying Computer Science. 
+              This is my personal website that I created during my STEP internship.
+          </h3> 
+          <div>
+            <a href="https://github.com/cjoshea9">
+              <img class="profile-picture" src="/images/github.png" width="50" height="50">
+            </a>
+            <a href="https://www.linkedin.com/in/cory-o-shea-9a6808172">
+              <img class="profile-picture" src="/images/linkedin.png" width="50" height="50">
+            </a>
+          </div>
+        </div>
+      </div> 
     </div>
   </body>
 </html>
