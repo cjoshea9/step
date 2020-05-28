@@ -6,39 +6,41 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div id="navbar"></div>
-    <script src="navigation.js"></script>
-    <br></br>
-    <div class="sign-header">
-          <span class="fast-flicker">P</span>h<span class="flicker">o</span>tos
-    </div>
-    <div class="slideshow-container">
-      <div class="mySlides fade">
-        <div class="numbertext">1 / 6</div>
-        <img class="slideshow-pic" src="/images/IMG_1926.JPG"> </img>
+    <div class="file-container">
+      <div id="navbar"></div>
+      <script src="navigation.js"></script>
+      <br></br>
+      <div class="sign-header">
+        <span class="fast-flicker">P</span>h<span class="flicker">o</span>tos
       </div>
-      <div class="mySlides fade">
-        <div class="numbertext">2 / 6</div>
-        <img class="slideshow-pic" src="/images/IMG_0369.JPEG"> </img>
+      <div class="slideshow-container">
+        <div class="slide fade">
+          <div>1 / 6</div>
+          <img class="slideshow-pic" src="/images/IMG_1926.JPG"> </img>
+        </div>
+        <div class="slide fade">
+          <div>2 / 6</div>
+          <img class="slideshow-pic" src="/images/IMG_0369.JPEG"> </img>
+        </div>
+        <div class="slide fade">
+          <div>3 / 6</div>
+          <img class="slideshow-pic" src="/images/IMG_0617.JPG"> </img>
+        </div>
+        <div class="slide fade">
+          <div>4 / 6</div>
+          <img class="slideshow-pic" src="/images/IMG_0636.jpg"> </img>
+        </div>
+        <div class="slide fade">
+          <div>5 / 6</div>
+          <img class="slideshow-pic" src="/images/IMG_1129.JPG"> </img>
+        </div>
+        <div class="slide fade">
+          <div>6 / 6</div>
+          <img class="slideshow-pic" src="/images/IMG_2655.JPG"> </img>
+        </div>
+        <a class="arrow" onclick="nextSlide(-1)">&#10094;</a>
+        <a class="arrow" onclick="nextSlide(1)">&#10095;</a>
       </div>
-      <div class="mySlides fade">
-        <div class="numbertext">3 / 6</div>
-        <img class="slideshow-pic" src="/images/IMG_0617.JPG"> </img>
-      </div>
-      <div class="mySlides fade">
-        <div class="numbertext">4 / 6</div>
-        <img class="slideshow-pic" src="/images/IMG_0636.jpg"> </img>
-      </div>
-      <div class="mySlides fade">
-        <div class="numbertext">5 / 6</div>
-        <img class="slideshow-pic" src="/images/IMG_1129.JPG"> </img>
-      </div>
-      <div class="mySlides fade">
-        <div class="numbertext">6 / 6</div>
-        <img class="slideshow-pic" src="/images/IMG_2655.JPG"> </img>
-      </div>
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
   </body>
   <script src="script.js"></script>

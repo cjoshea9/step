@@ -57,6 +57,10 @@
   padding: 15px;
 }
 
+.navbar-li:hover {
+    background-color: #797579;
+}
+
 .slideshow-container {
   justify-content: center;
   align-items: center;
@@ -68,11 +72,11 @@
   width:28vw;
 }
 
-.mySlides {
+.slide {
   display: none;
 }
 
-.prev, .next {
+.arrow {
   cursor: pointer;
   padding: 10px;
   color: white;
@@ -83,7 +87,7 @@
   user-select: none;
 }
 
-.prev:hover, .next:hover {
+.arrow:hover {
   background-color: #797579;
 }
 
@@ -113,7 +117,7 @@
   align-items: center;
 }
 
-#resume-container{
+.file-container{
     margin: 20px;
 }
 

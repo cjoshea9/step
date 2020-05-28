@@ -28,22 +28,21 @@ function addRandomGreeting() {
 }
 
 var slideIndex = 1;
-showSlides(slideIndex);
+showSlide(slideIndex);
 
-function plusSlides(n) {
-  showSlides(slideIndex+=n);
+function nextSlide(n) {
+  showSlide(slideIndex+=n);
 }
 
-function currentSlide(n) {
-  showSlides(slideIndex=n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
+function showSlide(n) {
+  var slides = document.getElementsByClassName("slide");
+  if (n > slides.length) {
+    slideIndex = 1
+  }
+  if (n < 1) {
+    slideIndex = slides.length
+  }
+  for (var i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
   }
   slides[slideIndex-1].style.display = "block";
