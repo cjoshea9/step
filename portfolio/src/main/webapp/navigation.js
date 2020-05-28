@@ -1,5 +1,5 @@
-document.getElementById("navbar").innerHTML = `
-  <div>
+document.getElementById("navbar").innerHTML =
+  `<div>
       <header> 
         <nav>
           <div>
@@ -20,5 +20,4 @@ document.getElementById("navbar").innerHTML = `
           </div>
         </nav>
       </header>
-    </div>
-`;
+    </div>`;
