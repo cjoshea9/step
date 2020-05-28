@@ -3,7 +3,7 @@
   margin-right: auto;
 }
 
-#homepage-info{
+.homepage-info{
   width: 100vw;
   height: 50vw;
   display: flex;
@@ -12,15 +12,35 @@
 }
 
 .profile {
-    padding: 5vw;
+  padding: 5vw;
 }
 
-#profile-text {
-    width: 25vw;
-    align-items: center;
+.profile-text {
+  width: 25vw;
+  align-items: center;
 }
 
-.profile-picture {
+#profile-picture {
+  border-radius: 70%;
+  box-shadow: 7px 7px 3px rgb(56, 54, 54);
+}
+
+.baseball {
+  border-radius: 8%;
+  padding: 5px;
+}
+
+#baseball-button {
+  background: white;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.icon {
     border-radius: 70%;
 }
 
@@ -35,6 +55,53 @@
   display: inline;
   font-size: 35px;
   padding: 15px;
+}
+
+.slideshow-container {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.slideshow-pic {
+  height:40vw;
+  width:28vw;
+}
+
+.mySlides {
+  display: none;
+}
+
+.prev, .next {
+  cursor: pointer;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.prev:hover, .next:hover {
+  background-color: #797579;
+}
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }
 
 .intro {
@@ -74,6 +141,18 @@ body {
     #6b1839,
     transparent
   );
+  color: #ffe6ff;
+  font-family: "Clip";
+  font-size: 6em;
+  letter-spacing: 2;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+    -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+    0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  text-transform: uppercase;
+}
+
+.sign-header {
+  animation: shine 2s forwards, flicker 3s infinite;
   color: #ffe6ff;
   font-family: "Clip";
   font-size: 6em;
