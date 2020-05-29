@@ -5,10 +5,73 @@
 
 .homepage-info{
   display: flex;
-  height: 50vw;
+  height: 90vh;
   justify-content: center;
   text-align: center;
   width: 100vw;
+}
+
+#google-img {
+  height: 100px;
+  padding: 10px;
+  width: 300px;
+}
+
+#weather-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+#card {
+  align-items: center;
+  background-color: white;
+  border-radius: 5%;
+  color: black;
+  height: 70vh;
+  justify-content: center;
+  padding: 20px;
+  width: 25vw;
+}
+
+#weather-header {
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#dropbtn {
+  background-color: #ec8aec;
+  border: none;
+  border-radius: 5%;
+  color: white;
+	font-size: 16px;
+  padding: 16px;
+}
+
+#dropdown {
+  display: inline-block;
+}
+
+#dropdown-content {
+  background-color: #f1f1f1;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  color: black;
+  display: none;
+  position: absolute;
+}
+
+#dropdown-content p:hover {
+  background-color: #ddd;
+}
+
+#dropdown:hover #dropdown-content {
+  display: block;
+}
+
+#dropdown:hover #dropbtn {
+  background-color: #ee96ee;
 }
 
 .profile {
@@ -90,7 +153,7 @@
 }
 
 .slideshow-container {
-    align-items: center;
+  align-items: center;
   justify-content: center;
   text-align: center;
 }
@@ -150,7 +213,7 @@
 }
 
 .file-container{
-    margin: 20px;
+  margin: 20px;
 }
 
 @font-face {
