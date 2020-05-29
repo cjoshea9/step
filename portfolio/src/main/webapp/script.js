@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-let slideIndex = 1;
+let slideIndex = 0;
 showSlide(slideIndex);
 
 /**
@@ -29,15 +29,15 @@ function nextSlide(n) {
 function showSlide(n) {
   let slides = document.getElementsByClassName("slide");
   //Reset to slide 1 once past last slide
-  if (n > slides.length) {
-    slideIndex = 1
+  if (n > slides.length-1) {
+    slideIndex = 0;
   }
   //Set to last slide if go before first slide
-  if (n < 1) {
-    slideIndex = slides.length
+  if (n < 0) {
+    slideIndex = slides.length-1
   }
   for (let i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
   }
-  slides[slideIndex-1].style.display = "block";
+  slides[slideIndex].style.display = "block";
 }

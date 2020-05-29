@@ -15,7 +15,7 @@
 /**
  * Reloads the weather page based on given latitude and longitude
  */
-function updateWeather(lat, lon, city_num) {
+function updateWeather(lat, lon, city) {
   $(document).ready(function() {
     function weather() {
       let URL = 'https://api.met.no/weatherapi/locationforecast/1.9/?lat=' + lat + '&lon=' + lon;
@@ -42,8 +42,7 @@ function updateWeather(lat, lon, city_num) {
       let root_fog = data.querySelectorAll('product > time > location > fog');
       let fog = root_fog[0].getAttribute('percent');
 
-      let cities = ["Chicago", "Mountian View", "New York", "Boulder", "Cambridge", "London", "Dublin", "Singapore", "Sydney", "Tokyo"]
-      $('#city').html(cities[city_num])
+      $('#city').html(city)
       $('#temp').html("Temperature: " + round(temp_f) + "°F");
       $('#humidity').html("Humidity: " + round(humidity) + "%");
       $('#weather').html(weather);
