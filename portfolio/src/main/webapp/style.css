@@ -3,7 +3,7 @@
   margin-right: auto;
 }
 
-.homepage-info{
+.homepage-info {
   display: flex;
   height: 90vh;
   justify-content: center;
@@ -46,6 +46,7 @@
   border: none;
   border-radius: 5%;
   color: white;
+	cursor: pointer;
 	font-size: 16px;
   padding: 16px;
 }
@@ -64,10 +65,12 @@
 
 #dropdown-content p:hover {
   background-color: #ddd;
+	cursor: pointer;
 }
 
 #dropdown:hover #dropdown-content {
   display: block;
+	cursor: pointer;
 }
 
 #dropdown:hover #dropbtn {
@@ -143,6 +146,7 @@
 
 .navbar-li:hover {
   background-color: #797579;
+	cursor: pointer;
 }
 
 #contact {
@@ -184,6 +188,7 @@
 
 .arrow:hover {
   background-color: #797579;
+	cursor: pointer;
 }
 
 .fade {
