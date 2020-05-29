@@ -65,12 +65,12 @@
 
 #dropdown-content p:hover {
   background-color: #ddd;
-	cursor: pointer;
+  cursor: pointer;
 }
 
 #dropdown:hover #dropdown-content {
   display: block;
-	cursor: pointer;
+  cursor: pointer;
 }
 
 #dropdown:hover #dropbtn {
@@ -146,7 +146,7 @@
 
 .navbar-li:hover {
   background-color: #797579;
-	cursor: pointer;
+  cursor: pointer;
 }
 
 #contact {
@@ -188,7 +188,7 @@
 
 .arrow:hover {
   background-color: #797579;
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .fade {
