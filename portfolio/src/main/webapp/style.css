@@ -36,7 +36,7 @@
 }
 
 #weather-header {
-	display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
 }
@@ -46,9 +46,12 @@
   border: none;
   border-radius: 5%;
   color: white;
-	cursor: pointer;
-	font-size: 16px;
+  font-size: 16px;
   padding: 16px;
+}
+
+#dropbtn:hover {
+  cursor:pointer;
 }
 
 #dropdown {
