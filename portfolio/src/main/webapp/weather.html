@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Weather Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="weather.js"></script>
+  </head>
+  <body>
+    <div class="file-container">
+      <div id="navbar"></div>
+      <script src="navigation.js"></script>  
+      <br></br>
+      <div class="sign-header">
+        <span class="fast-flicker">W</span>e<span class="flicker">a</span>ther
+      </div>
+      <div id="weather-container">
+        <div id="card">
+          <img src="/images/google.jpg" id="google-img">
+          <div id="dropdown">
+            <button id="dropbtn">--Select Google Office--</button>
+            <div id="dropdown-content">
+							<!-- The numbers passed in are the latitude and longitude of each location-->
+              <p onclick=updateWeather(41.88,-87.64,0)>Chicago</p>
+              <p onclick=updateWeather(37.42,-122.08,1)>Mountain View</p>
+              <p onclick=updateWeather(40.74,-74.01,2)>New York</p>
+              <p onclick=updateWeather(40.02,-105.26,3)>Boulder</p>
+              <p onclick=updateWeather(42.36,-71.09,4)>Cambridge</p>
+              <p onclick=updateWeather(51.49,-0.14,5)>London</p>
+              <p onclick=updateWeather(53.33,-6.24,6)>Dublin</p>
+              <p onclick=updateWeather(1.28,103.78,7)>Singapore</p>
+              <p onclick=updateWeather(-33.87,151.20,8)>Sydney</p>
+              <p onclick=updateWeather(35.66,139.70,9)>Tokyo</p>
+            </div>
+          </div>
+          <h2 id="city"> ---- </h2>
+          <br></br>
+          <h2 id="weather"> ---- </h2>
+          <h2 id="temp">Temperature: ---- </h2>
+          <h2 id="humidity"> Humidity: ---- </h2>
+          <h2 id="wind"> Wind: ---- </h2>
+          <h2 id="fog"> Fog: ---- </h2>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
