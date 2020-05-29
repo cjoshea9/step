@@ -18,21 +18,21 @@
 }
 
 #weather-container {
-	align-items: center;
+  align-items: center;
   display: flex;
   justify-content: center;
   text-align: center;
 }
 
 #card {
-	align-items: center;
-	background-color: white;
-	border-radius: 5%;
-	color: black;
-	height: 70vh;
-	justify-content: center;
-	padding: 20px;
-	width: 25vw;
+  align-items: center;
+  background-color: white;
+  border-radius: 5%;
+  color: black;
+  height: 70vh;
+  justify-content: center;
+  padding: 20px;
+  width: 25vw;
 }
 
 #weather-header {
