@@ -45,21 +45,11 @@ function showSlide(n) {
 async function getVacationSpots() {
   const response = await fetch('/data');
   const places = await response.json();
-  console.log(places);
   const vacationList = document.getElementById('data-servlet');
   vacationList.innerHTML = "<h1>Vacation Spots</h1>";
-  
-  let first = document.createElement("li");
-  first.innerText = places.first;
-  vacationList.appendChild(first);
-
-  let second = document.createElement("li");
-  second.innerText = places.second;
-  vacationList.appendChild(second);
-
-  let third = document.createElement("li");
-  third.innerText = places.third;
-  vacationList.appendChild(third);
-
-
+  for(let i = 0; i<places.length; i++) {
+    let elem = document.createElement("li");
+    elem.innerText = places[i];
+    vacationList.appendChild(elem);
+  }
 }
