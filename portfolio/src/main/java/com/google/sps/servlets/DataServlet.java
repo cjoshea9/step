@@ -15,10 +15,13 @@
 package com.google.sps.servlets;
 
 import java.io.IOException;
+import com.google.gson.Gson;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
+import java.util.HashMap;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
@@ -26,7 +29,17 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("Hello Cory! This should be rendered on the home page now.");
+
+    Map<String, String> vacations = new HashMap<>();
+    vacations.put("first", "Australia");
+    vacations.put("second","Bahamas");
+    vacations.put("third", "Greece");
+    Gson gson = new Gson();
+    String json = gson.toJson(vacations);
+
+    response.setContentType("application/json");
+    response.getWriter().println(json);
   }
+
+
 }
