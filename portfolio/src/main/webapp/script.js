@@ -42,14 +42,14 @@ function showSlide(n) {
   slides[slideIndex].style.display = "block";
 }
 
-async function getVacationSpots() {
+async function getComments() {
   const response = await fetch('/data');
-  const places = await response.json();
-  const vacationList = document.getElementById('data-servlet');
-  vacationList.innerHTML = "<h1>Vacation Spots</h1>";
-  for(let i = 0; i<places.length; i++) {
+  const comments = await response.json();
+  const commentList = document.getElementById('data-servlet');
+  commentList.innerHTML = "";
+  for(let i = 0; i<comments.length; i++) {
     let elem = document.createElement("li");
-    elem.innerText = places[i];
-    vacationList.appendChild(elem);
+    elem.innerText = comments[i];
+    commentList.appendChild(elem);
   }
 }

@@ -14,8 +14,9 @@
 #comments {
   display: flex;
   flex-direction: column;
-  height: 20vh;
+  height: 40vh;
   justify-content: center;
+  padding-bottom: 20px;
   text-align: center;
   width: 100vw;
 }
