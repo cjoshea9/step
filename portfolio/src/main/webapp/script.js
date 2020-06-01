@@ -41,3 +41,9 @@ function showSlide(n) {
   }
   slides[slideIndex].style.display = "block";
 }
+
+async function getInitialGreeting() {
+  const response = await fetch('/data');
+  const greeting = await response.text();
+  document.getElementById('data-servlet').innerText = greeting;
+}
