@@ -42,8 +42,14 @@ function showSlide(n) {
   slides[slideIndex].style.display = "block";
 }
 
-async function getInitialGreeting() {
+async function getVacationSpots() {
   const response = await fetch('/data');
-  const greeting = await response.text();
-  document.getElementById('data-servlet').innerText = greeting;
+  const places = await response.json();
+  const vacationList = document.getElementById('data-servlet');
+  vacationList.innerHTML = "<h1>Vacation Spots</h1>";
+  for(let i = 0; i<places.length; i++) {
+    let elem = document.createElement("li");
+    elem.innerText = places[i];
+    vacationList.appendChild(elem);
+  }
 }

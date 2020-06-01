@@ -11,6 +11,15 @@
   width: 100vw;
 }
 
+#comments {
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  justify-content: center;
+  text-align: center;
+  width: 100vw;
+}
+
 #google-img {
   height: 100px;
   padding: 10px;
