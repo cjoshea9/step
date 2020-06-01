@@ -45,7 +45,6 @@ function showSlide(n) {
 async function getComments() {
   const response = await fetch('/data');
   const comments = await response.json();
-  console.log(comments);
   const commentList = document.getElementById('data-servlet');
   commentList.innerHTML = "";
   for(let i = 0; i<comments.length; i++) {
