@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <title>Contact Page</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="getComments()">
     <div class="file-container">
       <div id="navbar"></div>
       <script src="navigation.js"></script>  
       <br></br>
       <div class="sign-header">
         <span class="fast-flicker">Co</span>ntac<span class="flicker">t M</span>e
+      </div>
+      <div id="comments">
+        <h1>Add a comment here</h1>
+        <form action="/data" method="POST"> 
+          <input id="comment-box" type=text name="comment">
+          </br>
+          <input type="submit"/>
+        </form>
+        <div id="data-servlet"></div>
       </div>
       <div id=contact>
         <h1>For work related purposes contact me here: 
