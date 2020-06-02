@@ -48,8 +48,15 @@ async function getComments() {
   const commentList = document.getElementById('data-servlet');
   commentList.innerHTML = "";
   for(let i = 0; i<comments.length; i++) {
-    let elem = document.createElement("li");
+    let div = document.createElement('div');
+    div.setAttribute('class', 'total-comment');
+    let img = document.createElement('img');
+    img.setAttribute('src', '/images/blank.png');
+    img.setAttribute('class', 'anon-icon');
+    let elem = document.createElement("h2");
     elem.innerText = comments[i];
-    commentList.appendChild(elem);
+    div.appendChild(img);
+    div.appendChild(elem);
+    commentList.appendChild(div);
   }
 }
