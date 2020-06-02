@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body onload="getComments()">
+  <body>
     <div id="navbar"></div>
     <script src="navigation.js"></script>
     <div id="content">
@@ -67,15 +67,6 @@
         </p>
         <button class="small-button"><a href="http://pbe.mit.edu">PBE</a></button>
       </div>  
-    </div>
-    <div id="comments">
-      <h1>Add a comment here</h1>
-      <form action="/data" method="POST"> 
-        <input type=text name="comment">
-        </br>
-        <input type="submit"/>
-      </form>
-      <div id="data-servlet"></div>
     </div>
     <div class="footer">
       <footer>
