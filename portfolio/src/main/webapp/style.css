@@ -11,18 +11,41 @@
   width: 100vw;
 }
 
+.anon-icon {
+  border-radius: 70%;
+  height:40px;
+  width: 40px;
+  margin-right: 20px;
+}
+
+.total-comment {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 #comments {
   display: flex;
   flex-direction: column;
-  height: 40vh;
-  justify-content: center;
-  padding-bottom: 20px;
-  text-align: center;
+  height: 80vh;
+  padding: 20px;
   width: 100vw;
 }
 
 #comment-box {
   size: "20";
+  cursor: text;
+  height: 8vh;
+  width: 40vw;
+  font-size: 16px;
+}
+
+#comment-header {
+  font-size: 45px;
+}
+
+#data-servlet {
+  padding-top: 30px;
 }
 
 #google-img {
