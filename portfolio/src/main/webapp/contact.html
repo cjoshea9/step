@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body onload="getComments()">
+  <body onload="showComments()">
     <div class="file-container">
       <div id="navbar"></div>
       <script src="navigation.js"></script>  
@@ -21,7 +21,20 @@
           </br>
           <input type="submit"/>
         </form>
+        <div id="adjust-buttons">
+          <select name="num-comments" onclick="showComments(this.value)">
+            <option value="-1">Show All Comments</option>
+            <option value="1">1 comment</option>
+            <option value="5">5 comments</option>
+            <option value="10">10 comments</option>
+            <option value="20">20 comments</option>
+          </select>
+          <form action="/delete-comments" method="POST">
+            <button onclick="deleteComments()">Delete All Comments</button>
+          </form>
+        </div>
         <div id="data-servlet"></div>
+        
       </div>
       <div id=contact>
         <h1>For work related purposes contact me here: 

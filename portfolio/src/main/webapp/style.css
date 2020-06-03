@@ -14,30 +14,44 @@
 .anon-icon {
   border-radius: 70%;
   height:40px;
-  width: 40px;
   margin-right: 20px;
+  width: 40px;
+}
+
+#adjust-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  width: 40vw;
 }
 
 .total-comment {
+  align-items: center;
+  background-color: #b6b1b1;
+  border-radius: 10px;
+  color: black;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  padding-bottom: 20px;
+  padding-left:10px;
+  margin-bottom: 10px;
+  width: 40vw;
 }
 
 #comments {
   display: flex;
   flex-direction: column;
-  height: 80vh;
-  padding: 20px;
+  height: 100vh;
+  padding: 10px;
   width: 100vw;
 }
 
 #comment-box {
-  size: "20";
   cursor: text;
-  height: 8vh;
-  width: 40vw;
   font-size: 16px;
+  height: 8vh;
+  size: "20";
+  width: 40vw;
 }
 
 #comment-header {
@@ -45,7 +59,7 @@
 }
 
 #data-servlet {
-  padding-top: 30px;
+  padding-top: 10px;
 }
 
 #google-img {
