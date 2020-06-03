@@ -42,7 +42,7 @@ function showSlide(n) {
   slides[slideIndex].style.display = "block";
 }
 
-async function getComments(num=-1) {
+async function showComments(num=-1) {
   const response = await fetch('/data');
   const comments = await response.json();
   const commentList = document.getElementById('data-servlet');
@@ -67,5 +67,5 @@ async function getComments(num=-1) {
 
 async function deleteComments() {
     const response = await fetch('/delete-comments');
-    getComments();
+    showComments();
 }
