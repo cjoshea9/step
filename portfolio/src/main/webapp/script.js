@@ -42,12 +42,16 @@ function showSlide(n) {
   slides[slideIndex].style.display = "block";
 }
 
-async function getComments() {
+async function getComments(num=-1) {
   const response = await fetch('/data');
   const comments = await response.json();
   const commentList = document.getElementById('data-servlet');
   commentList.innerHTML = "";
-  for(let i = 0; i<comments.length; i++) {
+  let parsedNum = parseInt(num);
+  if (parsedNum === -1 || comments.length<parsedNum) {
+      parsedNum = comments.length;
+  }
+  for(let i = 0; i<parsedNum; i++) {
     let div = document.createElement('div');
     div.setAttribute('class', 'total-comment');
     let img = document.createElement('img');
@@ -59,4 +63,9 @@ async function getComments() {
     div.appendChild(elem);
     commentList.appendChild(div);
   }
+}
+
+async function deleteComments() {
+    const response = await fetch('/delete-data');
+    getComments();
 }

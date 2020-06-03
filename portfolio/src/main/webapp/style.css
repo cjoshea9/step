@@ -14,30 +14,30 @@
 .anon-icon {
   border-radius: 70%;
   height:40px;
-  width: 40px;
   margin-right: 20px;
+  width: 40px;
 }
 
 .total-comment {
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
 }
 
 #comments {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 100vh;
   padding: 20px;
   width: 100vw;
 }
 
 #comment-box {
-  size: "20";
   cursor: text;
-  height: 8vh;
-  width: 40vw;
   font-size: 16px;
+  height: 8vh;
+  size: "20";
+  width: 40vw;
 }
 
 #comment-header {
