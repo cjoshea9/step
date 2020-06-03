@@ -20,16 +20,19 @@
           <textarea id="comment-box" name="comment" placeholder="Comment from Anonymous"></textarea>
           </br>
           <input type="submit"/>
+        </form>
+        <div id="adjust-buttons">
           <select name="num-comments" onclick="getComments(this.value)">
-            <option value="1">1</option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
+            <option value="-1">Show All Comments</option>
+            <option value="1">1 comment</option>
+            <option value="5">5 comments</option>
+            <option value="10">10 comments</option>
+            <option value="20">20 comments</option>
           </select>
-        </form>
-        <form action="/delete-data" method="POST">
-          <button onclick="deleteComments()">Delete All Comments</button>
-        </form>
+          <form action="/delete-comments" method="POST">
+            <button onclick="deleteComments()">Delete All Comments</button>
+          </form>
+        </div>
         <div id="data-servlet"></div>
         
       </div>

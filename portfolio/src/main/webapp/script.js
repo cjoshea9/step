@@ -66,6 +66,6 @@ async function getComments(num=-1) {
 }
 
 async function deleteComments() {
-    const response = await fetch('/delete-data');
+    const response = await fetch('/delete-comments');
     getComments();
 }

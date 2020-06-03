@@ -31,7 +31,7 @@ import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 
 
-@WebServlet("/delete-data")
+@WebServlet("/delete-comments")
 public class DeleteData extends HttpServlet {
 
   private DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
