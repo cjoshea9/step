@@ -54,18 +54,52 @@ async function showComments(num=-1) {
   for(let i = 0; i<parsedNum; i++) {
     let div = document.createElement('div');
     div.setAttribute('class', 'total-comment');
+    let innerDiv = document.createElement('div');
+    innerDiv.setAttribute('class', 'comment-text');
     let img = document.createElement('img');
-    img.setAttribute('src', '/images/blank.png');
+    img.setAttribute('src', comments[i][1]);
     img.setAttribute('class', 'anon-icon');
-    let elem = document.createElement("h2");
-    elem.innerText = comments[i];
+    let comment = document.createElement('h3');
+    comment.innerText = comments[i][0];
+    let name = document.createElement('p');
+    name.innerText = comments[i][2];
     div.appendChild(img);
-    div.appendChild(elem);
+    innerDiv.appendChild(name);
+    innerDiv.appendChild(comment);
+    div.appendChild(innerDiv);
     commentList.appendChild(div);
   }
 }
 
 async function deleteComments() {
-    const response = await fetch('/delete-comments');
-    showComments();
+  const response = await fetch('/delete-comments');
+  showComments();
 }
+
+function onSignIn(googleUser) {
+  const blankProfile = document.getElementById('profile-box');
+  const profile = googleUser.getBasicProfile();
+  let input = document.createElement('input');
+  const info = profile.getName() + " " + profile.getImageUrl() + " " + profile.getEmail();
+  input.setAttribute('name', 'profile');
+  input.setAttribute('value', info);
+  blankProfile.appendChild(input);
+  const button = document.getElementById('google-buttons');
+  button.innerHTML = `
+        <div id="sign-out" href="#" onclick="signOut()">
+          <img id="google-logo" src="/images/google-logo.jpg">
+          <p>Sign out</p>
+        </div>`;
+}
+
+function signOut() {
+  let auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    location.reload();
+  });
+  const button = document.getElementById('google-buttons');
+  button.innerHTML = `<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>`;
+}
+
+
+

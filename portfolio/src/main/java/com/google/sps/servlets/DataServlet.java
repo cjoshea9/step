@@ -39,11 +39,17 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Query query = new Query(COMMENT).addSort("timestamp", SortDirection.DESCENDING);
-    List<String> comments = new ArrayList<>();
+    List<List<String>> comments = new ArrayList<List<String>>();
     PreparedQuery results = datastore.prepare(query);
     for (Entity entity : results.asIterable()) {
+        List<String> currentInfo = new ArrayList<>();
         String comment = (String) entity.getProperty("comment");
-        comments.add(comment); 
+        String image = (String) entity.getProperty("image");
+        String name = (String) entity.getProperty("name");
+        currentInfo.add(comment);
+        currentInfo.add(image); 
+        currentInfo.add(name);
+        comments.add(currentInfo);
     }
     Gson gson = new Gson();
     response.setContentType("application/json");
@@ -53,10 +59,20 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String newComment = request.getParameter("comment");
+    String profile = request.getParameter("profile");
+    String[] attributes;
+    if (profile != null) {
+      attributes = profile.split(" ");
+    }
+    else {
+      attributes = new String[]{"Anonymous", "", "/images/blank.png", ""};
+    }
     long timestamp = System.currentTimeMillis();
     Entity commentEntity = new Entity(COMMENT);
     commentEntity.setProperty("comment", newComment);
     commentEntity.setProperty("timestamp", timestamp);
+    commentEntity.setProperty("name", attributes[0]+" "+attributes[1]);
+    commentEntity.setProperty("image", attributes[2]);
     datastore.put(commentEntity);
     response.sendRedirect("/contact.html");
   }

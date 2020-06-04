@@ -3,12 +3,38 @@
   margin-right: auto;
 }
 
+#split-page {
+  display:flex;
+  flex-direction: row;
+}
+
+#google-logo {
+  height: 35px;
+  width: 35px;
+}
+
+#sign-out {
+  align-items: center;
+  background-color:#4285f4;
+  display:flex;
+  cursor: pointer;
+  font-family: Roboto,arial,sans-serif;
+  font-size: 13px;
+  height: 35px;
+  justify-content: space-around;
+  width: 114px;
+}
+
 .homepage-info {
   display: flex;
   height: 90vh;
   justify-content: center;
   text-align: center;
   width: 100vw;
+}
+
+h3 {
+  margin: 0;
 }
 
 .anon-icon {
@@ -25,6 +51,10 @@
   width: 40vw;
 }
 
+#profile-box {
+  display:none;
+}
+
 .total-comment {
   align-items: center;
   background-color: #b6b1b1;
@@ -34,16 +64,22 @@
   flex-direction: row;
   padding-bottom: 20px;
   padding-left:10px;
+  padding-right:10px;
   margin-bottom: 10px;
   width: 40vw;
+}
+
+.comment-text {
+  display: flex;
+  flex-direction:column;
 }
 
 #comments {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   padding: 10px;
-  width: 100vw;
+  margin-bottom: 30px;
+  width: 55vw;
 }
 
 #comment-box {
@@ -204,10 +240,8 @@
 }
 
 #contact {
-  align-items: center;
   display:flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .slideshow-container {
