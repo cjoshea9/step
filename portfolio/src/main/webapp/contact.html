@@ -5,6 +5,8 @@
     <title>Contact Page</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="https://apis.google.com/js/platform.js" defer></script>
+    <meta name="google-signin-client_id" content="895229822158-fr752h2bo6ffm0sglk14uilv4u0aq9vi.apps.googleusercontent.com">
   </head>
   <body onload="showComments()">
     <div class="file-container">
@@ -14,35 +16,47 @@
       <div class="sign-header">
         <span class="fast-flicker">Co</span>ntac<span class="flicker">t M</span>e
       </div>
-      <div id="comments">
-        <h1 id="comment-header">Add a comment here</h1>
-        <form action="/data" method="POST"> 
-          <textarea id="comment-box" name="comment" placeholder="Comment from Anonymous"></textarea>
-          </br>
-          <input type="submit"/>
-        </form>
-        <div id="adjust-buttons">
-          <select name="num-comments" onclick="showComments(this.value)">
-            <option value="-1">Show All Comments</option>
-            <option value="1">1 comment</option>
-            <option value="5">5 comments</option>
-            <option value="10">10 comments</option>
-            <option value="20">20 comments</option>
-          </select>
-          <form action="/delete-comments" method="POST">
-            <button onclick="deleteComments()">Delete All Comments</button>
+      <div id="split-page">
+        <div id="comments">
+          <h1 id="comment-header">Add a comment here</h1>
+          <form action="/data" method="POST"> 
+            <textarea id="comment-box" name="comment" placeholder="Add a comment..."></textarea>
+            </br>
+            <input class="comment-button" type="submit"/>
+            <div id="profile-box"></div>
           </form>
+          <div id="adjust-buttons">
+            <select class="comment-button" name="num-comments" onclick="showComments(this.value)">
+              <option value="-1">Show All Comments</option>
+              <option value="1">1 comment</option>
+              <option value="5">5 comments</option>
+              <option value="10">10 comments</option>
+              <option value="20">20 comments</option>
+            </select>
+            <form action="/delete-comments" method="POST">
+              <button class="comment-button" onclick="deleteComments()">Delete All Comments</button>
+            </form>
+          </div>
+          <div id="data-servlet"></div>
         </div>
-        <div id="data-servlet"></div>
-        
-      </div>
-      <div id=contact>
-        <h1>For work related purposes contact me here: 
-          <a href="mailto:cjoshea@google.com">cjoshea@google.com</a>
-        </h1>
-        <h1>For personal messages contact me here: 
-          <a href="mailto:cjoshea@mit.edu">cjoshea@mit.edu</a>
-        </h1>
+        <div id=contact>
+          <h1>Email</h1>
+          <p>For work related purposes contact me here: 
+            <a href="mailto:cjoshea@google.com">cjoshea@google.com</a>
+          </p>
+          <p>For personal messages contact me here: 
+            <a href="mailto:cjoshea@mit.edu">cjoshea@mit.edu</a>
+          </p>
+          <h1>Social Media</h1>
+          <div>
+            <a href="https://github.com/cjoshea9">
+              <img class="icon" src="/images/github.png">
+            </a>
+            <a href="https://www.linkedin.com/in/cory-o-shea-9a6808172">
+              <img class="icon" src="/images/linkedin.png">
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </body>

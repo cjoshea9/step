@@ -51,21 +51,70 @@ async function showComments(num=-1) {
   if (parsedNum === -1 || comments.length<parsedNum) {
       parsedNum = comments.length;
   }
-  for(let i = 0; i<parsedNum; i++) {
-    let div = document.createElement('div');
-    div.setAttribute('class', 'total-comment');
-    let img = document.createElement('img');
-    img.setAttribute('src', '/images/blank.png');
-    img.setAttribute('class', 'anon-icon');
-    let elem = document.createElement("h2");
-    elem.innerText = comments[i];
-    div.appendChild(img);
-    div.appendChild(elem);
-    commentList.appendChild(div);
-  }
+  let counter = 0;
+  comments.forEach(elem => {
+    if (counter < parsedNum) {
+      const div = document.createElement('div');
+      div.setAttribute('class', 'total-comment');
+      const innerDiv = document.createElement('div');
+      innerDiv.setAttribute('class', 'comment-text');
+      const img = document.createElement('img');
+      img.setAttribute('src', elem.image);
+      img.setAttribute('class', 'anon-icon');
+      const comment = document.createElement('h3');
+      const text = document.createTextNode(elem.text);
+      comment.appendChild(text);
+      const name = document.createElement('p');
+      const owner = document.createTextNode(elem.owner);
+      name.appendChild(owner);
+      div.appendChild(img);
+      innerDiv.appendChild(name);
+      innerDiv.appendChild(comment);
+      div.appendChild(innerDiv);
+      commentList.appendChild(div);
+    }
+    counter +=1;
+  });
 }
 
 async function deleteComments() {
-    const response = await fetch('/delete-comments');
-    showComments();
+  const response = await fetch('/delete-comments');
+  showComments();
+}
+
+function onSignIn(googleUser) {
+  const blankProfile = document.getElementById('profile-box');
+  const profile = googleUser.getBasicProfile();
+  const input = document.createElement('input');
+  const info = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token;
+  input.setAttribute('name', 'profile-token');
+  input.setAttribute('value', info);
+  blankProfile.appendChild(input);
+  const button = document.getElementById('google-buttons');
+  button.innerHTML = '';
+  const div = document.createElement('div');
+  div.setAttribute('id', 'sign-out');
+  div.setAttribute('href', '#');
+  div.setAttribute('onclick', 'signOut()');
+  const img = document.createElement('img');
+  img.setAttribute('id', 'google-id');
+  img.setAttribute('src', profile.getImageUrl());
+  const p = document.createElement('p');
+  p.innerText = 'Sign out';
+  div.appendChild(img);
+  div.appendChild(p);
+  button.appendChild(div);
+}
+
+function signOut() {
+  const auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    location.reload();
+  });
+  const button = document.getElementById('google-buttons');
+  button.innerHTML = '';
+  const div = document.createElement('div');
+  div.setAttribute('class', 'g-signin2');
+  div.setAttribute('data-onsuccess', 'onSignIn');
+  div.setAttribute('data-theme', 'dark');
 }
