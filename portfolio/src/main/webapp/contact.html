@@ -5,7 +5,7 @@
     <title>Contact Page</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/platform.js" defer></script>
     <meta name="google-signin-client_id" content="895229822158-fr752h2bo6ffm0sglk14uilv4u0aq9vi.apps.googleusercontent.com">
   </head>
   <body onload="showComments()">
@@ -22,11 +22,11 @@
           <form action="/data" method="POST"> 
             <textarea id="comment-box" name="comment" placeholder="Add a comment..."></textarea>
             </br>
-            <input type="submit"/>
+            <input class="comment-button" type="submit"/>
             <div id="profile-box"></div>
           </form>
           <div id="adjust-buttons">
-            <select name="num-comments" onclick="showComments(this.value)">
+            <select class="comment-button" name="num-comments" onclick="showComments(this.value)">
               <option value="-1">Show All Comments</option>
               <option value="1">1 comment</option>
               <option value="5">5 comments</option>
@@ -34,7 +34,7 @@
               <option value="20">20 comments</option>
             </select>
             <form action="/delete-comments" method="POST">
-              <button onclick="deleteComments()">Delete All Comments</button>
+              <button class="comment-button" onclick="deleteComments()">Delete All Comments</button>
             </form>
           </div>
           <div id="data-servlet"></div>

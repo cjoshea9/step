@@ -3,12 +3,19 @@
   margin-right: auto;
 }
 
+a {
+  color: #ec8aec;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 #split-page {
   display:flex;
   flex-direction: row;
 }
 
-#google-logo {
+#google-id {
+  border-radius: 70%;
   height: 35px;
   width: 35px;
 }
@@ -22,7 +29,29 @@
   font-size: 13px;
   height: 35px;
   justify-content: space-around;
+  padding-bottom: 3px;
+  padding-top: 3px;
   width: 114px;
+}
+
+.comment-button {
+  background: #ec8aec;
+  border: 2px solid #999;
+  border-radius: 15px;
+  color: #fff;
+  font-family: tahoma,geneva,algerian;
+  height: 30px;
+  width: 200px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+}
+
+.comment-button:hover {
+  cursor:pointer;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+  width: 200px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
 }
 
 .homepage-info {
