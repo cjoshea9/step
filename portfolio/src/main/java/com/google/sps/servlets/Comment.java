@@ -29,8 +29,8 @@ public class Comment {
     return this.owner;
   }
 
-  public String getText() {
-    return this.text;
+  public String getLowerCaseText() {
+    return this.text.toLowerCase();
   }
 
   public String getImage() {
