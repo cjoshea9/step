@@ -24,6 +24,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.regex.*;
+import java.util.stream.*;
+import java.util.Set;
+import java.util.LinkedHashSet;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -57,7 +60,7 @@ public class DataServlet extends HttpServlet {
       Comment current = new Comment(name, comment, image);
       comments.add(current);
     }
-    List<Comment> filteredComments = match(request.getParameter("searchTerm"), comments);
+    Set<Comment> filteredComments = match(request.getParameter("searchTerm"), comments);
 	
     Gson gson = new Gson();
     response.setContentType("application/json");
@@ -98,48 +101,51 @@ public class DataServlet extends HttpServlet {
   /**
   * Completes modified fuzzy search given a searchTerm and a list of comments
   */
-  private List<Comment> match(String searchTerm, List<Comment> comments) {
-    List<Comment> matches = new ArrayList<Comment>();
-
+  private Set<Comment> match(String searchTerm, List<Comment> comments) {
+    //List<Comment> matches = new ArrayList<Comment>();
+    Set<Comment> matches = new LinkedHashSet<>();
     String term = searchTerm.toLowerCase();
+
+    //Exact match
+    Set<Comment> commentsCopy = new LinkedHashSet<Comment>(comments);
+    Set<Comment> exactMatches = commentsCopy.stream().filter(comment -> comment.getLowerCaseText().contains(term))
+      .collect(Collectors.toSet());
+    matches.addAll(exactMatches);
+
     for(Comment comment: comments) {
       String text = comment.getLowerCaseText();
-      System.out.println(text);
-      if(text.contains(term)) {
-        matches.add(comment);
-      }
-
       for(int i=0; i< term.length(); i++) {
         //Insert each letter in the alphabet
         String inserted = "[.]*" + term.substring(0,i) + "." + term.substring(i) + "[.]*";
-        if(Pattern.matches(inserted, text) && !matches.contains(comment)) {
+        if(Pattern.matches(inserted, text)) {
           matches.add(comment);
         }
         //Swap out letter with letter from alphabet
         if (i<term.length()-1) {
           String swapped = "[.]*" + term.substring(0,i) + "." + term.substring(i+1) + "[.]*";
-          if (Pattern.matches(swapped, text) && !matches.contains(comment)){
+          if (Pattern.matches(swapped, text)) {
             matches.add(comment);
           } 
         }
       }
 
       for(int i=1; i<term.length(); i++) {
-        //Delete each letter
-        String deleted = term.substring(0,i);
-        if(i<term.length()-1) {
-          deleted += term.substring(i+1);
+        //Swap adjacent letters
+        String swapAdjacent = "[.]*" + term.substring(0,i-1) + term.charAt(i) + term.charAt(i-1);
+        if (i<term.length()-1) {
+          swapAdjacent += term.substring(i+1) + "[.]*";
         }
-        String deleteFirst = term.substring(1);
-        if((text.contains(deleted) || text.contains(deleteFirst)) && !matches.contains(comment)) {
+        if(Pattern.matches(swapAdjacent, text)) {
           matches.add(comment);
         }
-        //Swap adjacent letters
-        String swapAdjacent = term.substring(0,i-1) + term.charAt(i) + term.charAt(i-1);
-        if (i<term.length()-1) {
-          swapAdjacent += term.substring(i+1);
+        
+        //Delete each letter
+        String deleted = "[.]*" + term.substring(0,i);
+        if(i<term.length()-1) {
+          deleted += term.substring(i+1) + "[.]*";
         }
-        if(text.contains(swapAdjacent) && !matches.contains(comment)) {
+        String deleteFirst = "[.]*" + term.substring(1) + "[.]*";
+        if(Pattern.matches(deleted, text) || Pattern.matches(deleteFirst, text)) {
           matches.add(comment);
         }
       }
