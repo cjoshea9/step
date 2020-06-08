@@ -90,6 +90,7 @@ async function deleteComments() {
 function onSignIn(googleUser) {
   const blankProfile = document.getElementById('profile-box');
   const profile = googleUser.getBasicProfile();
+  console.log(profile);
   const input = document.createElement('input');
   const info = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token;
   input.setAttribute('name', 'profile-token');
