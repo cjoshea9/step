@@ -43,23 +43,22 @@ function showSlide(n) {
 }
 
 async function showComments(num=-1) {
-  const response = await fetch('/data');
+  const searchTerm = document.getElementById('search-text').value;
+  const response = await fetch('/data?searchTerm='+searchTerm);
   const comments = await response.json();
   renderComments(comments, num);
 }
 
 function renderComments(comments, num) {
   const commentList = document.getElementById('data-servlet');
-  const searchTerm = document.getElementById('search-text').value;
   commentList.innerHTML = "";
   let parsedNum = parseInt(num);
   if (parsedNum === -1 || comments.length<parsedNum) {
       parsedNum = comments.length;
   }
   let counter = 0;
-  console.log(searchTerm);
   comments.forEach(elem => {
-    if (counter < parsedNum && match(searchTerm, elem.text)) {
+    if (counter < parsedNum) {
       const div = document.createElement('div');
       div.setAttribute('class', 'total-comment');
       const innerDiv = document.createElement('div');
@@ -81,12 +80,6 @@ function renderComments(comments, num) {
     }
     counter +=1;
   });
-}
-
-function match(searchTerm, comment) {
-  searchTerm = searchTerm.toLowerCase();
-  comment = comment.toLowerCase();
-  return searchTerm === "" || comment.includes(searchTerm);
 }
 
 async function deleteComments() {
