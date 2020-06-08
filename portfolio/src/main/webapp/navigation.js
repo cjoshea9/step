@@ -36,8 +36,5 @@ document.getElementById("navbar").innerHTML =
             </ul>    
           </div>
         </nav>
-        <div id="google-buttons">
-          <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-        </div>
       </header>
     </div>`;
