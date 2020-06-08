@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.regex.*;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -42,7 +43,6 @@ public class DataServlet extends HttpServlet {
   
   private DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
   private final String COMMENT = "Comment";
-  private final String ALPHABET = "abcdefghijklmnopqrstuvwxyz ";
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -57,11 +57,11 @@ public class DataServlet extends HttpServlet {
       Comment current = new Comment(name, comment, image);
       comments.add(current);
     }
-    List<Comment> updatedComments = match(request.getParameter("searchTerm"), comments);
+    List<Comment> filteredComments = match(request.getParameter("searchTerm"), comments);
 	
     Gson gson = new Gson();
     response.setContentType("application/json");
-    response.getWriter().println(gson.toJson(updatedComments));
+    response.getWriter().println(gson.toJson(filteredComments));
   }
 
   @Override
@@ -104,24 +104,23 @@ public class DataServlet extends HttpServlet {
     String term = searchTerm.toLowerCase();
     for(Comment comment: comments) {
       String text = comment.getLowerCaseText();
+      System.out.println(text);
       if(text.contains(term)) {
         matches.add(comment);
       }
-      for(char letter: ALPHABET.toCharArray()){
-        for(int i=0; i< term.length(); i++) {
-          //Insert each letter in the alphabet
-          String inserted = term.substring(0,i) + letter + term.substring(i);
-          if(text.contains(inserted) && !matches.contains(comment)) {
+
+      for(int i=0; i< term.length(); i++) {
+        //Insert each letter in the alphabet
+        String inserted = "[.]*" + term.substring(0,i) + "." + term.substring(i) + "[.]*";
+        if(Pattern.matches(inserted, text) && !matches.contains(comment)) {
+          matches.add(comment);
+        }
+        //Swap out letter with letter from alphabet
+        if (i<term.length()-1) {
+          String swapped = "[.]*" + term.substring(0,i) + "." + term.substring(i+1) + "[.]*";
+          if (Pattern.matches(swapped, text) && !matches.contains(comment)){
             matches.add(comment);
-          }
-          //Swap out letter with letter from alphabet
-          if (i>0) {
-            String swapped = term.substring(0,i) + letter + term.substring(i-1);
-            String swapFirst = letter + term.substring(1);
-            if ((text.contains(swapped) || text.contains(swapFirst)) && !matches.contains(comment)){
-              matches.add(comment);
-            } 
-          }
+          } 
         }
       }
 
@@ -134,7 +133,6 @@ public class DataServlet extends HttpServlet {
         String deleteFirst = term.substring(1);
         if((text.contains(deleted) || text.contains(deleteFirst)) && !matches.contains(comment)) {
           matches.add(comment);
-          System.out.println("delete match");
         }
         //Swap adjacent letters
         String swapAdjacent = term.substring(0,i-1) + term.charAt(i) + term.charAt(i-1);
@@ -143,7 +141,6 @@ public class DataServlet extends HttpServlet {
         }
         if(text.contains(swapAdjacent) && !matches.contains(comment)) {
           matches.add(comment);
-          System.out.println("swap adjacent match");
         }
       }
     }
