@@ -139,13 +139,19 @@ h3 {
   text-align: center;
 }
 
-#card {
+#weather-title {
+  font-size: 35px;
+}
+
+.card {
   align-items: center;
   background-color: white;
   border-radius: 5%;
   color: black;
   height: 70vh;
   justify-content: center;
+  margin-left: 5vw;
+  margin-right: 5vw;
   padding: 20px;
   width: 25vw;
 }

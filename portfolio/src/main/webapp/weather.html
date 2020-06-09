@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Weather</title>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="weather.js"></script>
     <script src="https://apis.google.com/js/platform.js" defer></script>
@@ -18,12 +19,12 @@
         <span class="fast-flicker">W</span>e<span class="flicker">a</span>ther
       </div>
       <div id="weather-container">
-        <div id="card">
+        <div class="card">
           <img src="/images/google.jpg" id="google-img">
           <div id="dropdown">
             <button id="dropbtn">--Select Google Office--</button>
             <div id="dropdown-content">
-							<!-- The numbers passed in are the latitude and longitude of each location-->
+			  <!-- The numbers passed in are the latitude and longitude of each location-->
               <p onclick=updateWeather(41.88,-87.64,"Chicago")>Chicago</p>
               <p onclick=updateWeather(37.42,-122.08,"MTV")>Mountain View</p>
               <p onclick=updateWeather(40.74,-74.01,"NYC")>New York</p>
@@ -43,6 +44,10 @@
           <h2 id="humidity"> Humidity: ---- </h2>
           <h2 id="wind"> Wind: ---- </h2>
           <h2 id="fog"> Fog: ---- </h2>
+        </div>
+        <div>
+          <h1 id="weather-title">Google Offices Map</h1>
+          <div id="regions_div" class="card" style="width: 900px; height: 400px;"></div>
         </div>
       </div>
     </div>
