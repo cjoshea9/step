@@ -102,7 +102,6 @@ public class DataServlet extends HttpServlet {
   * Completes modified fuzzy search given a searchTerm and a list of comments
   */
   private Set<Comment> match(String searchTerm, List<Comment> comments) {
-    //List<Comment> matches = new ArrayList<Comment>();
     Set<Comment> matches = new LinkedHashSet<>();
     String term = searchTerm.toLowerCase();
 
