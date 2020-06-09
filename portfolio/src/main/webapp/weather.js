@@ -62,9 +62,19 @@ function updateWeather(lat, lon, city) {
 }
 
 //Loads Google Charts API with API key
+const keyFile = new XMLHttpRequest();
+let mapsApiKey = '';
+keyFile.open("GET", "key.txt", false);
+keyFile.onreadystatechange = function () {
+  if(keyFile.readyState === 4 && (keyFile.status === 200 || keyFile.status == 0)) {
+      mapsApiKey = keyFile.responseText;
+  }
+}
+keyFile.send(null);
+
 google.charts.load('current', {
   'packages':['map'],
-  'mapsApiKey': 'AIzaSyDM9sByIw0WzqhldUvZWirvLlmioC1_xMU'
+  'mapsApiKey': mapsApiKey
 });
 google.charts.setOnLoadCallback(drawMap);
 
