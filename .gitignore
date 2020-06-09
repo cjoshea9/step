@@ -1,3 +1,4 @@
 target/
 .idea
 *.log
+portfolio/src/main/webapp/key.txt
