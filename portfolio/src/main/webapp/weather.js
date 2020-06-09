@@ -57,7 +57,7 @@ function updateWeather(lat, lon, city) {
 /**
 * Rounds input to one decimal
 */
-  function round(num) {
+function round(num) {
   return Math.round(num*10)/10;
 }
 
