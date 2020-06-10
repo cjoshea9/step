@@ -9,6 +9,12 @@ a {
   text-transform: uppercase;
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+}
+
 #split-page {
   display:flex;
   flex-direction: row;
