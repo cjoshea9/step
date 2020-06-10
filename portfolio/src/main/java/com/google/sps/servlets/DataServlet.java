@@ -115,13 +115,13 @@ public class DataServlet extends HttpServlet {
       String text = comment.getLowerCaseText();
       for(int i=0; i< term.length(); i++) {
         //Insert each letter in the alphabet
-        String inserted = "[.]*" + term.substring(0,i) + "." + term.substring(i) + "[.]*";
+        String inserted = "[\\s\\S]*" + term.substring(0,i) + "." + term.substring(i) + "[\\s\\S]*";
         if(Pattern.matches(inserted, text)) {
           matches.add(comment);
         }
         //Swap out letter with letter from alphabet
         if (i<term.length()-1) {
-          String swapped = "[.]*" + term.substring(0,i) + "." + term.substring(i+1) + "[.]*";
+          String swapped = "[\\s\\S]*" + term.substring(0,i) + "." + term.substring(i+1) + "[\\s\\S]*";
           if (Pattern.matches(swapped, text)) {
             matches.add(comment);
           } 
@@ -130,20 +130,20 @@ public class DataServlet extends HttpServlet {
 
       for(int i=1; i<term.length(); i++) {
         //Swap adjacent letters
-        String swapAdjacent = "[.]*" + term.substring(0,i-1) + term.charAt(i) + term.charAt(i-1);
+        String swapAdjacent = "[\\s\\S]*" + term.substring(0,i-1) + term.charAt(i) + term.charAt(i-1);
         if (i<term.length()-1) {
-          swapAdjacent += term.substring(i+1) + "[.]*";
+          swapAdjacent += term.substring(i+1) + "[\\s\\S]*";
         }
         if(Pattern.matches(swapAdjacent, text)) {
           matches.add(comment);
         }
         
         //Delete each letter
-        String deleted = "[.]*" + term.substring(0,i);
+        String deleted = "[\\s\\S]*" + term.substring(0,i);
         if(i<term.length()-1) {
-          deleted += term.substring(i+1) + "[.]*";
+          deleted += term.substring(i+1) + "[\\s\\S]*";
         }
-        String deleteFirst = "[.]*" + term.substring(1) + "[.]*";
+        String deleteFirst = "[\\s\\S]*" + term.substring(1) + "[\\s\\S]*";
         if(Pattern.matches(deleted, text) || Pattern.matches(deleteFirst, text)) {
           matches.add(comment);
         }
