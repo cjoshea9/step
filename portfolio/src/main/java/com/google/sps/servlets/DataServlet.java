@@ -104,7 +104,7 @@ public class DataServlet extends HttpServlet {
   private Set<Comment> match(String searchTerm, List<Comment> comments) {
     Set<Comment> matches = new LinkedHashSet<>();
     final String term = searchTerm.toLowerCase();
-    final String anyCharacterString = "[\\s\\S]*";
+    final String anyCharacterString = ".*";
 
     //Exact match
     Set<Comment> commentsCopy = new LinkedHashSet<Comment>(comments);
