@@ -30,7 +30,7 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 
-
+/** Servlet that deletes all comments in the App Engine database.*/
 @WebServlet("/delete-comments")
 public class DeleteData extends HttpServlet {
 
