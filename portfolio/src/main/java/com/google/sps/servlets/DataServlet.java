@@ -40,7 +40,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 
-/** Servlet that returns some example content.*/
+/** Servlet that returns comment data.*/
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
   
@@ -69,8 +69,8 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String newComment = request.getParameter("comment");
-    String profileToken = request.getParameter("profile-token");
+    final String newComment = request.getParameter("comment");
+    final String profileToken = request.getParameter("profile-token");
     GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), JacksonFactory.getDefaultInstance())
       .setAudience(Collections.singletonList("895229822158-fr752h2bo6ffm0sglk14uilv4u0aq9vi.apps.googleusercontent.com")).build();
     GoogleIdToken token = null;
@@ -103,7 +103,8 @@ public class DataServlet extends HttpServlet {
   */
   private Set<Comment> match(String searchTerm, List<Comment> comments) {
     Set<Comment> matches = new LinkedHashSet<>();
-    String term = searchTerm.toLowerCase();
+    final String term = searchTerm.toLowerCase();
+    final String anyCharacterString = "[\\s\\S]*";
 
     //Exact match
     Set<Comment> commentsCopy = new LinkedHashSet<Comment>(comments);
@@ -115,13 +116,13 @@ public class DataServlet extends HttpServlet {
       String text = comment.getLowerCaseText();
       for(int i=0; i< term.length(); i++) {
         //Insert each letter in the alphabet
-        String inserted = "[\\s\\S]*" + term.substring(0,i) + "." + term.substring(i) + "[\\s\\S]*";
+        final String inserted = anyCharacterString + term.substring(0,i) + "." + term.substring(i) + anyCharacterString;
         if(Pattern.matches(inserted, text)) {
           matches.add(comment);
         }
         //Swap out letter with letter from alphabet
         if (i<term.length()-1) {
-          String swapped = "[\\s\\S]*" + term.substring(0,i) + "." + term.substring(i+1) + "[\\s\\S]*";
+          final String swapped = anyCharacterString + term.substring(0,i) + "." + term.substring(i+1) + anyCharacterString;
           if (Pattern.matches(swapped, text)) {
             matches.add(comment);
           } 
@@ -130,20 +131,20 @@ public class DataServlet extends HttpServlet {
 
       for(int i=1; i<term.length(); i++) {
         //Swap adjacent letters
-        String swapAdjacent = "[\\s\\S]*" + term.substring(0,i-1) + term.charAt(i) + term.charAt(i-1);
+        String swapAdjacent = anyCharacterString + term.substring(0,i-1) + term.charAt(i) + term.charAt(i-1);
         if (i<term.length()-1) {
-          swapAdjacent += term.substring(i+1) + "[\\s\\S]*";
+          swapAdjacent += term.substring(i+1) + anyCharacterString;
         }
         if(Pattern.matches(swapAdjacent, text)) {
           matches.add(comment);
         }
         
         //Delete each letter
-        String deleted = "[\\s\\S]*" + term.substring(0,i);
+        String deleted = anyCharacterString + term.substring(0,i);
         if(i<term.length()-1) {
-          deleted += term.substring(i+1) + "[\\s\\S]*";
+          deleted += term.substring(i+1) + anyCharacterString;
         }
-        String deleteFirst = "[\\s\\S]*" + term.substring(1) + "[\\s\\S]*";
+        final String deleteFirst = anyCharacterString + term.substring(1) + anyCharacterString;
         if(Pattern.matches(deleted, text) || Pattern.matches(deleteFirst, text)) {
           matches.add(comment);
         }
