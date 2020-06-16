@@ -21,9 +21,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public final class FindMeetingQuery {
+
+  /**
+  * Finds open time slots for the meeting request given the attendees and day's schedule
+  */
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
     //Check to make sure meeting time can fit into the day
-    if (request.getDuration()> TimeRange.END_OF_DAY+1) {
+    if (request.getDuration() > TimeRange.END_OF_DAY+1) {
       return new ArrayList<>();
     }
     
@@ -70,7 +74,9 @@ public final class FindMeetingQuery {
     return availableAll.size() > 0 ? availableAll : availableRequired;
   }
 
-
+  /**
+  * Finds the open slots in the day given the that are full already
+  */
   private List<TimeRange> getAvailableTimes(List<TimeRange> meetingTimes, MeetingRequest request) {
     List<TimeRange> availableTimes = new ArrayList<>();
 
@@ -88,20 +94,20 @@ public final class FindMeetingQuery {
       TimeRange nextMeeting = meetingTimes.get(i+1);
       int timeBetweenMeetings = nextMeeting.start() - currentMeeting.end();
 
-      if ( timeBetweenMeetings >= request.getDuration()) {
+      if (timeBetweenMeetings >= request.getDuration()) {
         TimeRange available = TimeRange.fromStartDuration(currentMeeting.end(), timeBetweenMeetings);
         availableTimes.add(available);
       }
-      nested = (currentMeeting.start() < nextMeeting.start() && currentMeeting.end() > nextMeeting.end()) ? true : false;
+      nested = currentMeeting.end() >= nextMeeting.end() ? true : false;
     
-      if(nextMeeting.end()>dayEnd) {
+      if(nextMeeting.end() > dayEnd) {
         dayEnd = nextMeeting.end();
       }
     }
 
     //Add time from end of last meeting to end of the day
     int timeLeftInDay = TimeRange.END_OF_DAY-dayEnd+1;
-    if (dayEnd < TimeRange.END_OF_DAY &&  timeLeftInDay > request.getDuration()) {
+    if (dayEnd < TimeRange.END_OF_DAY && timeLeftInDay > request.getDuration()) {
       availableTimes.add(TimeRange.fromStartDuration(dayEnd, timeLeftInDay));
     }
     return availableTimes;
